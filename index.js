@@ -12,10 +12,10 @@ program
     .description('Run a bot')
     .action(() => {
         configManager.init(program.opts().config)
-        log.Logger('BOT').info('BOT starting...')
+        log.Logger('BOT').cddddinfo('BOT starting...')
         require('./src/bot-start')
     })
-dsdasdsads
+
 program
     .command('notifier')
     .description('Run a notifier')
