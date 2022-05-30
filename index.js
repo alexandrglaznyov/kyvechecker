@@ -15,7 +15,7 @@ program
         log.Logger('BOT').info('BOT starting...')
         require('./src/bot-start')
     })
-
+dsdasdsads
 program
     .command('notifier')
     .description('Run a notifier')
