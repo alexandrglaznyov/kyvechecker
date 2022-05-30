@@ -18,8 +18,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       env:
-        USER: ${{ secret.USER_DOCKERHUB }}
-        PASS: ${{ secret.PASS_DOCKERHUB }}        
+        USER: ${{ secrets.USER_DOCKERHUB }}
+        PASS: ${{ secrets.PASS_DOCKERHUB }}        
         
       run: |
         docker login -u $USER -p $PASS
@@ -30,7 +30,7 @@ jobs:
         
     - name: docker push
       run: | 
-        docker push ${{ secret.USER_DOCKERHUB }}/docker
+        docker push ${{ secrets.USER_DOCKERHUB }}/docker
         
         
         
