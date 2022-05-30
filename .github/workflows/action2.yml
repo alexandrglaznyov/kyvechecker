@@ -2,11 +2,8 @@ name: Docker Image CI
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    tags:
+      - 'v*.*.*'
 
 jobs:
   build:
@@ -27,14 +24,15 @@ jobs:
     - name: build docker image
       run: |
         docker build . -t test
-        
+    - name: Set env
+      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV 
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.USER_DOCKERHUB }}/docker:latest
+        tags: ${{ secrets.USER_DOCKERHUB }}/docker:${{ env.RELEASE_VERSION }}
         
         
         
