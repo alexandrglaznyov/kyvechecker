@@ -7,11 +7,6 @@ const program = new commander.Command().option(
     'Set a config file'
 )
 
-
-
-
-
-
 program
     .command('bot')
     .description('Run a bot')
@@ -20,10 +15,6 @@ program
         log.Logger('BOT').info('BOT starting...')
         require('./src/bot-start')
     })
-
-
-
-
 
 program
     .command('notifier')
@@ -46,12 +37,5 @@ program
         const execute = require('./src/message')
         await execute(messageName)
     })
-
-
-
-
-
-
-
 
 program.parse()
